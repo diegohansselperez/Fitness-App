@@ -1,10 +1,11 @@
 import './index.css';
+import Navbar from '@/scenes/Navbar';
 
 function App() {
   return (
     <>
-      <div className="app bg-gray-20">
-        <p>Hola Mundo</p>
+      <div className="app bg-gray-20 ">
+        <Navbar />
       </div>
     </>
   );
