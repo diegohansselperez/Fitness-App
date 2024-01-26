@@ -6,33 +6,33 @@ type Props = { selectedPage: string; setSelectedPage: (value: string) => void };
 
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const flexBetween = 'flex items-center justify-between';
-
+  //fixed top-0 z-30 w-full py-6`
   return (
     <nav>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
-        <section className={`${flexBetween} mx-auto w-5/6 `}>
+      <div className={`${flexBetween} mx-auto w-5/6`}>
+        <section className={`${flexBetween} w-full gap-16 `}>
           {' '}
           <img src={Logo} alt="logo evogym" />
-          <div className={`${flexBetween} w-full gap-16 `}>
-            <div className={`${flexBetween} w-full gap-8 `}>
+          <div className={`${flexBetween} w-full `}>
+            <div className={`${flexBetween} gap-8  text-sm`}>
               <Link
                 page="Home"
-                setSelectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
                 selectedPage={selectedPage}
               />
               <Link
-                page="Beneficts"
-                setSelectedPage={selectedPage}
+                page="Benefits"
+                setSelectedPage={setSelectedPage}
                 selectedPage={selectedPage}
               />
               <Link
                 page="Our Classes"
-                setSelectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
                 selectedPage={selectedPage}
               />
               <Link
                 page="Contact Us"
-                setSelectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
                 selectedPage={selectedPage}
               />
             </div>
