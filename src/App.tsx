@@ -2,15 +2,12 @@ import { useState } from 'react';
 import './index.css';
 import Navbar from './scenes/Navbar';
 
-enum SelectdPage {
-  Home = 'home',
-  Benefits = 'benefit',
-  OurClasses = 'ourclasses',
-  ContactUs = 'contactus',
-}
+import { SelectedPage } from './shared/types';
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState<string>('home');
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
+    SelectedPage.Home,
+  );
   return (
     <>
       <div className="app bg-gray-20 ">
