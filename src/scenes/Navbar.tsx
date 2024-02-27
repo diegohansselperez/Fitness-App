@@ -12,41 +12,54 @@ type Props = {
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const flexBetween = 'flex items-center justify-between';
   //fixed top-0 z-30 w-full py-6`
-  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
+  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1024px)');
   return (
     <nav>
       <div className={`${flexBetween} mx-auto w-5/6`}>
         <section className={`${flexBetween} w-full gap-16 `}>
           {' '}
           <img src={Logo} alt="logo evogym" />
-          <div className={`${flexBetween} w-full `}>
-            <div className={`${flexBetween} gap-8  text-sm`}>
-              <Link
-                page="Home"
-                setSelectedPage={setSelectedPage}
-                selectedPage={selectedPage}
-              />
-              <Link
-                page="Benefits"
-                setSelectedPage={setSelectedPage}
-                selectedPage={selectedPage}
-              />
-              <Link
-                page="Our Classes"
-                setSelectedPage={setSelectedPage}
-                selectedPage={selectedPage}
-              />
-              <Link
-                page="Contact Us"
-                setSelectedPage={setSelectedPage}
-                selectedPage={selectedPage}
-              />
-            </div>
-            <div className={`${flexBetween} gap-8 `}>
-              <p>Sing In</p>
-              <button>Become a Member</button>
-            </div>
-          </div>
+          {isAboveMediumScreens ? (
+            <>
+              {' '}
+              <div className={`${flexBetween} w-full `}>
+                <div className={`${flexBetween} gap-8 text-sm`}>
+                  <Link
+                    page="Home"
+                    setSelectedPage={setSelectedPage}
+                    selectedPage={selectedPage}
+                  />
+                  <Link
+                    page="Benefits"
+                    setSelectedPage={setSelectedPage}
+                    selectedPage={selectedPage}
+                  />
+                  <Link
+                    page="Our Classes"
+                    setSelectedPage={setSelectedPage}
+                    selectedPage={selectedPage}
+                  />
+                  <Link
+                    page="Contact Us"
+                    setSelectedPage={setSelectedPage}
+                    selectedPage={selectedPage}
+                  />
+                </div>
+                <div className={`${flexBetween} gap-8 `}>
+                  <p>Sing In</p>
+                  <button>Become a Member</button>
+                </div>{' '}
+              </div>
+            </>
+          ) : (
+            <button
+              className="rounded-full bg-secundary-500 p-2 border-none m-0"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
+            >
+              <Bars3Icon className="h-5 w-6 text-white" />
+            </button>
+          )}
         </section>
       </div>
     </nav>
