@@ -65,6 +65,45 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           )}
         </section>
       </div>
+      {/*MOBILE MENU MODAL */}
+      {!isAboveMediumScreens && isMenuToggled && (
+        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+          {/*CLOSE ICON */}
+          <div className="flex justify-end p-12">
+            <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
+              <XMarkIcon className="h-6 w-6 text-gray-400" />
+            </button>
+          </div>
+          <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+            <Link
+              page="Home"
+              setSelectedPage={setSelectedPage}
+              selectedPage={selectedPage}
+            />
+            <Link
+              page="Benefits"
+              setSelectedPage={setSelectedPage}
+              selectedPage={selectedPage}
+            />
+            <Link
+              page="Our Classes"
+              setSelectedPage={setSelectedPage}
+              selectedPage={selectedPage}
+            />
+            <Link
+              page="Contact Us"
+              setSelectedPage={setSelectedPage}
+              selectedPage={selectedPage}
+            />
+          </div>
+          <div className="flex flex-col p-[11%] text-center align-middle text-xl">
+            <p>Sing In</p>
+            <ActionButton setSelectedPage={setSelectedPage}>
+              Become a Member
+            </ActionButton>
+          </div>{' '}
+        </div>
+      )}
     </nav>
   );
 };
