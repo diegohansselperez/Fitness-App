@@ -6,18 +6,21 @@ import { SelectedPage } from '../shared/types';
 import useMediaQuery from '../hooks/useMediaQuery';
 import ActionButton from '../shared/ActionButton';
 type Props = {
+  isTopOfPage: boolean;
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
+const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = 'flex items-center justify-between';
   //fixed top-0 z-30 w-full py-6`
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery('(min-width: 1024px)');
+  const navbarBackground = isTopOfPage ? '' : 'bg-primary-100 drop-shadow';
+
   return (
-    <nav>
-      <div className={`${flexBetween} mx-auto w-5/6`}>
+    <nav className={`${navbarBackground} p-2 top-0 z-30`}>
+      <div className={` ${flexBetween} w-full mx-auto`}>
         <section className={`${flexBetween} w-full gap-16 `}>
           {' '}
           <img src={Logo} alt="logo evogym" />
@@ -57,10 +60,10 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             </>
           ) : (
             <button
-              className="rounded-full bg-secundary-500 p-2 border-none m-0"
+              className="rounded-full bg-secundary-500 p-1 border-none m-0"
               onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
-              <Bars3Icon className="h-5 w-6 text-white" />
+              <Bars3Icon className="h-6 w-7 m-0 p-0 text-white" />
             </button>
           )}
         </section>
